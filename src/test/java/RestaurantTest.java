@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +18,22 @@ class RestaurantTest {
         restaurant.addToMenu("Sweet corn soup",119);
         restaurant.addToMenu("Vegetable lasagne", 269);
     }
+    
+    @Test
+    public void get_total_order_value_in_case_particular_items_checked() {
+    	List<Item> restMenuList = restaurant.getMenu();
+    	assertEquals(388,restaurant.getTotalOrderValue(restMenuList));
+    }
+
+    @Test
+    public void total_order_value_should_reduce_when_particular_item_removed() {
+    	List<Item> restMenuList = restaurant.getMenu();
+    	int totalOrder = restaurant.getTotalOrderValue(restMenuList);
+    	int totalOrderValueAfterItemRemoval = restMenuList.get(1).getPrice();
+    	restMenuList.remove(1);
+    	assertEquals(totalOrder - totalOrderValueAfterItemRemoval,restaurant.getTotalOrderValue(restMenuList));
+    }
+    
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>OPEN/CLOSED<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     //-------FOR THE 2 TESTS BELOW, YOU MAY USE THE CONCEPT OF MOCKING, IF YOU RUN INTO ANY TROUBLE

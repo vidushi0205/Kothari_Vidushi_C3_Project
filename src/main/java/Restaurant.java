@@ -29,6 +29,11 @@ public class Restaurant {
         return false;
 
     }
+    
+    public int getTotalOrderValue(List<Item> menuList) {
+    	//Returning sample total order value to bypass compilation errors
+    	return 500;
+    }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
