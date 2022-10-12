@@ -31,8 +31,11 @@ public class Restaurant {
     }
     
     public int getTotalOrderValue(List<Item> menuList) {
-    	//Returning sample total order value to bypass compilation errors
-    	return 500;
+    	int totalOrder = 0;
+    	for(Item itemValue : menuList) {
+    		totalOrder+=itemValue.getPrice();
+    	}
+    	return totalOrder;
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
